@@ -1,0 +1,21 @@
+
+.container{
+    border:1px solid rgb(50,50,50,.2);
+    border-radius:15px;
+    padding:15px;
+    font-family: Arial,serif;
+    table,tr,td,th{
+        border-collapse: collapse;
+        padding:1em;
+        color:green;
+        /*border:1px solid rgb(50,50,50,.2);*/
+        button{
+            margin-left:10px;
+            padding:.5em;
+            border-radius:10px;
+            border:none;
+            background-color:lightgray;
+            color:darkslategray;
+        }
+    }
+}

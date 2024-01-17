@@ -1,0 +1,10 @@
+.container{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding:10px;
+    background:transparent;
+    color:#333;
+    font-family: Arial,serif;
+    border:1px solid rgb(99,99,99,.1)
+}

@@ -1,0 +1,22 @@
+
+.container{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    padding:10px;
+    background:transparent;
+    position:fixed;
+    width:100vw;
+    font-family: Arial, serif;
+
+        .title {
+            font-weight: bold;
+            font-size: 25px;
+            background: linear-gradient(to right, deeppink,purple);
+            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+            border-radius: 15px;
+            padding: 10px;
+        }
+
+}
