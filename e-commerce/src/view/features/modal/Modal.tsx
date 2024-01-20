@@ -1,18 +1,35 @@
 import { Dialog, Transition } from '@headlessui/react'
-import { Fragment, useState } from 'react'
+import { Fragment,SetStateAction, useState} from 'react'
 
-interface IUserDetails{
-    username:string,
-    password:string,
-    isActive?:boolean,
-    role?:"user" | "admin"
+interface IUserDetails {
+     username: string | undefined,
+    password: string | undefined,
+    isActive?: boolean,
+    role?: "user" | "admin"
 }
 
 export default function Modal() {
-    const  [isOpen, setIsOpen] = useState<boolean>(false);
-    const [userName, setUsername] = useState<string>();
-    const [userPassword, setUserPassword] = useState<string>();
-    const [userDetails, setUserDetails] = useState<IUserDetails>();
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const [userName, setUsername] = useState<string | undefined>("");
+    const [userPassword, setUserPassword] = useState<string | undefined>("");
+    const [userCredentials, setUserCredentials] = useState<IUserDetails | undefined>();
+
+    console.log(userName)
+    console.log(userPassword)
+    const handleUserCredentials = ()=> {
+        setUserCredentials({
+            username: userName,
+            password: userPassword
+        })
+
+    }
+    console.log(userCredentials)
+    const handleUsername = (e: {target:{ value: SetStateAction<string | undefined>;}} )=>{
+        setUsername(e.target.value)
+    }
+    const handlePassword = (e:{target:{value:SetStateAction<string | undefined>;}}) =>{
+        setUserPassword(e.target.value)
+    }
 
     function closeModal() {
         setIsOpen(false)
@@ -82,12 +99,12 @@ export default function Modal() {
                                     <div className="mt-2">
                                         <fieldset className="border-2 border-gray-400 rounded-md p-1">
                                             <legend className="ml-5"><label htmlFor="username">&nbsp; Username&nbsp; </label></legend>
-                                            <input type="text" id="username" name="username" className="w-full p-2 rounded-md focus:outline-none"/>
+                                            <input type="text" id="username" name="username" onBlur={handleUsername} className="w-full p-2 rounded-md focus:outline-none"/>
                                         </fieldset>
                                         <br/>
                                         <fieldset className="border-2 border-gray-400 rounded-md p-1">
                                             <legend className="ml-5"> <label htmlFor="password">&nbsp;  Password &nbsp;  </label></legend>
-                                            <input type="password"  id="password" name="password" className="w-full p-2 rounded-md focus:outline-none" />
+                                            <input type="password"  id="password" name="password" onBlur={handlePassword} className="w-full p-2 rounded-md focus:outline-none" />
                                         </fieldset>
                                     </div>
 
@@ -97,7 +114,7 @@ export default function Modal() {
                                             className=" inline-flex justify-center rounded-md border border-transparent
                                              bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200
                                              focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                                            onClick={closeModal}
+                                            onClick={handleUserCredentials}
                                         >
                                             Login
                                         </button>

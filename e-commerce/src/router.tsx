@@ -3,6 +3,7 @@ import Home from "./view/pages/Home.tsx";
 import Product from "./view/pages/Product.tsx";
 
 const Router = createBrowserRouter([
+
     {
         path:"/",
         element:"hello"
