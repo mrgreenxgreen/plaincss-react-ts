@@ -1,5 +1,7 @@
 import { Dialog, Transition } from '@headlessui/react'
-import { Fragment,SetStateAction, useState} from 'react'
+import {Fragment, SetStateAction, useContext, useState} from 'react'
+import {Context} from "../../../context/UserContext.tsx";
+import {useNavigate} from "react-router-dom";
 
 interface IUserDetails {
      username: string | undefined,
@@ -14,15 +16,25 @@ export default function Modal() {
     const [userPassword, setUserPassword] = useState<string | undefined>("");
     const [userCredentials, setUserCredentials] = useState<IUserDetails | undefined>();
 
-    console.log(userName)
-    console.log(userPassword)
+    const {user,setUser} = useContext(Context)
+
+    const navigate = useNavigate()
+
+    console.log(userName+"this is modal username")
+    console.log(userPassword+"this is modal password")
     const handleUserCredentials = ()=> {
-        setUserCredentials({
-            username: userName,
-            password: userPassword
+
+        setUser({
+            username:userName,
+            password:userPassword,
+            isActive:true,
+            role:"user"
         })
 
     }
+    console.log(typeof(user))
+    console.log(user)
+    console.log(user)
     console.log(userCredentials)
     const handleUsername = (e: {target:{ value: SetStateAction<string | undefined>;}} )=>{
         setUsername(e.target.value)

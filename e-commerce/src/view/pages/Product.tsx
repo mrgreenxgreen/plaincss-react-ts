@@ -3,10 +3,13 @@ import ProductDetails from "../features/product-details/ProductDetails.tsx";
 
 const Product = () => {
     return (
+        <>
+
         <div>
            <Header/>
             <ProductDetails/>
         </div>
+        </>
     );
 };
 

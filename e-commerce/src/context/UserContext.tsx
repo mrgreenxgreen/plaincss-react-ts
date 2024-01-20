@@ -1,13 +1,15 @@
 import {createContext, ReactElement, useState} from "react";
 
-const UserContext = ({children}:{children:ReactElement}) => {
-    const [user, setUser] = useState("")
-    const UserContext = createContext({})
+
+export const Context = createContext({})
+
+const  UserContext = ({children}:{children:ReactElement}) => {
+    const [user, setUser] = useState<any>("hello")
     return (
         <div>
-            <UserContext.Provider value={{user,setUser}} >
+            <Context.Provider value={{user,setUser}} >
                 {children}
-            </UserContext.Provider>
+            </Context.Provider>
         </div>
     );
 };

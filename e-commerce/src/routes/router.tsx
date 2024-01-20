@@ -1,6 +1,7 @@
 import {createBrowserRouter} from "react-router-dom";
-import Home from "./view/pages/Home.tsx";
-import Product from "./view/pages/Product.tsx";
+import Home from "../view/pages/Home.tsx";
+import Product from "../view/pages/Product.tsx";
+
 
 const Router = createBrowserRouter([
 
@@ -20,5 +21,7 @@ const Router = createBrowserRouter([
 
     }
 ])
+
+
 
 export default Router;
