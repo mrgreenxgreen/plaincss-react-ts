@@ -12,10 +12,11 @@
   }
   ```
 */
-import { Fragment, useState } from 'react'
+import {Fragment, useContext, useState} from 'react'
 import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
 import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import {NavLink} from "react-router-dom";
+import {Context} from "../../../context/UserContext.tsx";
 
 const navigation = {
 
@@ -148,6 +149,8 @@ function classNames(...classes: string[]) {
 
 export default function Navigation() {
     const [open, setOpen] = useState(false)
+    const {user} = useContext(Context)
+    console.log(user)
 
     return (
         <div className="bg-white">
@@ -265,6 +268,8 @@ export default function Navigation() {
                                 </div>
 
                                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
+
+
                                     <div className="flow-root">
                                         <a href="#" className="-m-2 block p-2 font-medium text-gray-900">
                                             Sign in
@@ -427,13 +432,16 @@ export default function Navigation() {
 
                             <div className="ml-auto flex items-center">
                                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
+
+                                    {user.isActive?(<h1>{user.username}</h1>):(
+                                    <div>
                                     <a href="#" className="text-sm font-medium text-gray-700 hover:text-gray-800">
                                         Sign in
                                     </a>
                                     <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
                                     <a href="#" className="text-sm font-medium text-gray-700 hover:text-gray-800">
                                         Create account
-                                    </a>
+                                    </a></div>)}
                                 </div>
 
                                 <div className="hidden lg:ml-8 lg:flex">

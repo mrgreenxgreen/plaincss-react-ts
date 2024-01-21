@@ -71,7 +71,25 @@ export default function ProductDetails():ReactElement | null {
         <div className="bg-white">
             <div className="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 gap-y-16 px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:grid-cols-2 lg:px-8">
                 <div>
-                    {<Modal/>}
+
+                    { user.isActive?( <div className=" flex items-center justify-start gap-4">
+                            <button
+                                type="button"
+                                className="text-3xl rounded-md bg-amber-500 px-4 py-2 font-medium text-white hover:bg-amber-600
+                     focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"
+                            >
+                                Order now
+                            </button>
+                            <button
+                                type="button"
+                                className="text-3xl rounded-md bg-amber-200 px-4 py-2 font-medium text-amber-950 hover:bg-amber-600
+                    focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"
+                            >
+                                Add to cart
+                            </button>
+
+                        </div>
+                    ):(<Modal/>)}
                     <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{products[Number(id)-1].name}</h2>
                     <p className="mt-4 text-gray-500">
                         The walnut wood card tray is precision milled to perfectly fit a stack of Focus cards. The powder coated

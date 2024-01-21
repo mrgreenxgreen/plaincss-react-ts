@@ -23,13 +23,13 @@ export default function Modal() {
     console.log(userName+"this is modal username")
     console.log(userPassword+"this is modal password")
     const handleUserCredentials = ()=> {
-
         setUser({
             username:userName,
             password:userPassword,
             isActive:true,
             role:"user"
         })
+        navigate("/home")
 
     }
     console.log(typeof(user))

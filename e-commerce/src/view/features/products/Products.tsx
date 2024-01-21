@@ -13,7 +13,7 @@
   ```
 */
 import {NavLink} from "react-router-dom";
-import userContext, {Context} from "../../../context/UserContext.tsx";
+import  {Context} from "../../../context/UserContext.tsx";
 import {useContext} from "react";
 
 const products = [
@@ -57,8 +57,7 @@ const products = [
 ]
 
 export default function Products() {
-    const {user} = useContext(Context)
-    console.log(user)
+
     return (
         <div className="bg-white">
             <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
