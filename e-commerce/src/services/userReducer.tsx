@@ -1,17 +1,15 @@
-import {SetStateAction, useReducer, useState} from 'react'
+import {useReducer, useState} from 'react'
 
-const initialState = {
-    name: "john"
-};
+
 
 const reducer = (state, action) => {
     switch (action.type) {
         case "post": {
-            return state.value;
+            return {value: action.value}
         }
         case "get": {
 
-            return "hehe"
+            return {value:"hehe"}
         }
         default:
             return state;
@@ -19,23 +17,29 @@ const reducer = (state, action) => {
 };
 
 export default function MyComponent() {
-
+    const [name, setName] = useState()
     const [state, dispatch] = useReducer(reducer, {value:""});
 
-
-    const handleInputName = (e: { target: { value: SetStateAction<string>; }; })=>{
-        setName(e.target.value)
-    }
+    console.log(name)
+    const handleInputName = ()=>{
+        dispatch({type:"post",value:name})
+        setName("")
+    };
 
     return (
         <div>
             <label htmlFor="name">name:</label>
-            <input type="text" placeholder="enter your name" id="name" name="name" onBlur={handleInputName}/>
+            <input type="text"
+                   placeholder="enter your name"
+                   id="name"
+                   value={name}
+                   name="nam"
+                   onChange={(e)=>{setName(e.target.value)}}/>
             <p>
-                Count: {state}
-                {name}
+                Count: {state.value}
+
             </p>
-            <button onClick={()=>dispatch({type:"post"})} className="p-1 rounded-md border-2 border-gray-600">
+            <button onClick={handleInputName} className="p-1 rounded-md border-2 border-gray-600">
                 Save
             </button>
             <button onClick={()=>dispatch({type:"get"})} className="p-1 rounded-md border-2 border-gray-600" >
