@@ -1,0 +1,70 @@
+
+.orderContainer{
+   @apply flex items-center justify-start gap-4;
+
+   .orderButton{
+   @apply text-3xl rounded-md bg-amber-500 px-4 py-2 font-medium text-white hover:bg-amber-600
+   focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75;
+   }
+   .addToCartButton{
+      @apply text-3xl rounded-md bg-amber-200 px-4 py-2 font-medium text-amber-950 hover:bg-amber-600
+      focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75;
+   }
+}
+
+
+.Transition{
+
+      .Dialog{
+
+         .TransitionChild{
+
+         }
+
+         .DivContainerMajor{
+
+            .DivContainerMinor{
+
+               .TransitionChild2{
+
+                  .DialogPanel{
+
+                     .DialogTitle{
+
+                     }
+                     form{
+
+                        div{
+
+                           fieldset{
+
+                              legend{
+
+                                 label{
+
+                                 }
+                              }
+                              input{
+
+                              }
+                           }
+                           div{
+
+                              .LoginButton{
+
+                              }
+                              .SignUpButton{
+
+                              }
+                           }
+                        }
+                     }
+                  }
+
+               }
+
+            }
+         }
+
+      }
+}

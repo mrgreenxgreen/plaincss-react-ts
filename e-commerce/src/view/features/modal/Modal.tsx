@@ -2,7 +2,7 @@ import { Dialog, Transition } from '@headlessui/react'
 import {Fragment, SetStateAction, useContext, useState} from 'react'
 import {Context} from "../../../context/UserContext.tsx";
 import {useNavigate} from "react-router-dom";
-
+import CSS from "./Modal.module.css"
 interface IUserDetails {
      username: string | undefined,
     password: string | undefined,
@@ -30,7 +30,7 @@ export default function Modal() {
             isActive: true,
             role: "user"
         }
-        setUser(credentials)
+        //setUser(credentials)
         localStorage.setItem("userCredentials",JSON.stringify(credentials))
 
         navigate("/home")
@@ -63,20 +63,18 @@ export default function Modal() {
     }
     return (
         <>
-            <div className=" flex items-center justify-start gap-4">
+            <div className={CSS.orderContainer}>
                 <button
                     type="button"
                     onClick={openModal}
-                    className="text-3xl rounded-md bg-amber-500 px-4 py-2 font-medium text-white hover:bg-amber-600
-                     focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"
+                    className={CSS.orderButton}
                 >
                     Order now
                 </button>
                 <button
                     type="button"
                     onClick={addToCart}
-                    className="text-3xl rounded-md bg-amber-200 px-4 py-2 font-medium text-amber-950 hover:bg-amber-600
-                    focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"
+                    className={CSS.addToCartButton}
                 >
                     Add to cart
                 </button>
@@ -116,35 +114,35 @@ export default function Modal() {
                                         Please login to continue
                                     </Dialog.Title>
                                     <form className="">
-                                    <div className="mt-2">
-                                        <fieldset className="border-2 border-gray-400 rounded-md p-1">
-                                            <legend className="ml-5"><label htmlFor="username">&nbsp; Username&nbsp; </label></legend>
-                                            <input type="text" id="username" name="username" onBlur={handleUsername} className="w-full p-2 rounded-md focus:outline-none"/>
-                                        </fieldset>
-                                        <br/>
-                                        <fieldset className="border-2 border-gray-400 rounded-md p-1">
-                                            <legend className="ml-5"> <label htmlFor="password">&nbsp;  Password &nbsp;  </label></legend>
-                                            <input type="password"  id="password" name="password" onBlur={handlePassword} className="w-full p-2 rounded-md focus:outline-none" />
-                                        </fieldset>
-                                    </div>
+                                        <div className="mt-2">
+                                            <fieldset className="border-2 border-gray-400 rounded-md p-1">
+                                                <legend className="ml-5"><label htmlFor="username">&nbsp; Username&nbsp; </label></legend>
+                                                <input type="text" id="username" name="username" onBlur={handleUsername} className="w-full p-2 rounded-md focus:outline-none"/>
+                                            </fieldset>
+                                            <br/>
+                                            <fieldset className="border-2 border-gray-400 rounded-md p-1">
+                                                <legend className="ml-5"> <label htmlFor="password">&nbsp;  Password &nbsp;  </label></legend>
+                                                <input type="password"  id="password" name="password" onBlur={handlePassword} className="w-full p-2 rounded-md focus:outline-none" />
+                                            </fieldset>
+                                        </div>
 
-                                    <div className="mt-4 flex justify-center gap-5">
-                                        <button
-                                            type="button"
-                                            className=" inline-flex justify-center rounded-md border border-transparent
-                                             bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200
-                                             focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                                            onClick={handleUserCredentials}
-                                        >
-                                            Login
-                                        </button>
-                                        <button
-                                            className="border-2 border-blue-200 pl-2 pr-2 rounded-md text-blue-900 text-sm  font-medium hover:bg-blue-200"
-                                        >
-                                            Sign up
-                                        </button>
-                                    </div>
-                                </form>
+                                        <div className="mt-4 flex justify-center gap-5">
+                                            <button
+                                                type="button"
+                                                className=" inline-flex justify-center rounded-md border border-transparent
+                                                bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200
+                                                focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                                                onClick={handleUserCredentials}
+                                            >
+                                                Login
+                                            </button>
+                                            <button
+                                                className="border-2 border-blue-200 pl-2 pr-2 rounded-md text-blue-900 text-sm  font-medium hover:bg-blue-200"
+                                            >
+                                                Sign up
+                                            </button>
+                                        </div>
+                                    </form>
                                 </Dialog.Panel>
                             </Transition.Child>
                         </div>

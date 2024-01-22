@@ -12,7 +12,7 @@
   }
   ```
 */
-import {Fragment, useContext, useState} from 'react'
+import {Fragment, useContext, useEffect, useState} from 'react'
 import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
 import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import {NavLink} from "react-router-dom";
@@ -149,8 +149,14 @@ function classNames(...classes: string[]) {
 
 export default function Navigation() {
     const [open, setOpen] = useState(false)
-    const {user} = useContext(Context)
-    console.log(user)
+    const {user, setUser} = useContext(Context)
+
+    useEffect(()=> {
+        const user = JSON.parse(localStorage.getItem("userCredentials"))
+        return setUser(user)
+    },[])
+
+    console.log(user.username)
 
     return (
         <div className="bg-white">
@@ -432,7 +438,6 @@ export default function Navigation() {
 
                             <div className="ml-auto flex items-center">
                                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-
                                     {user.isActive?(<h1>{user.username}</h1>):(
                                     <div>
                                     <a href="#" className="text-sm font-medium text-gray-700 hover:text-gray-800">
