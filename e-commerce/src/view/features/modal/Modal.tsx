@@ -14,7 +14,7 @@ export default function Modal() {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [userName, setUsername] = useState<string | undefined>("");
     const [userPassword, setUserPassword] = useState<string | undefined>("");
-    const [userCredentials, setUserCredentials] = useState<IUserDetails | undefined>();
+    const [userCredentials, setUserCredentials] = useState<IUserDetails>();
 
     const {user,setUser} = useContext(Context)
 
@@ -23,19 +23,27 @@ export default function Modal() {
     console.log(userName+"this is modal username")
     console.log(userPassword+"this is modal password")
     const handleUserCredentials = ()=> {
-        setUser({
-            username:userName,
-            password:userPassword,
-            isActive:true,
-            role:"user"
-        })
+
+        const credentials = {
+            username: userName,
+            password: userPassword,
+            isActive: true,
+            role: "user"
+        }
+        setUser(credentials)
+        localStorage.setItem("userCredentials",JSON.stringify(credentials))
+
         navigate("/home")
 
     }
+
+    //testing purposes
     console.log(typeof(user))
     console.log(user)
     console.log(user)
     console.log(userCredentials)
+
+    //methods
     const handleUsername = (e: {target:{ value: SetStateAction<string | undefined>;}} )=>{
         setUsername(e.target.value)
     }
