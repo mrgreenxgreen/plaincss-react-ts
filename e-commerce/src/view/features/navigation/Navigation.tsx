@@ -17,6 +17,7 @@ import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
 import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import {NavLink} from "react-router-dom";
 import {Context} from "../../../context/UserContext.tsx";
+import DropdownButton from "../../atoms/dropdown-button/DropdownButton.tsx";
 
 const navigation = {
 
@@ -152,11 +153,16 @@ export default function Navigation() {
     const {user, setUser} = useContext(Context)
 
     useEffect(()=> {
-        const user = JSON.parse(localStorage.getItem("userCredentials"))
-        return setUser(user)
+        if(localStorage.getItem("userCredentials")){
+            const user = JSON.parse(localStorage.getItem("userCredentials"))
+            return setUser(user)
+        }
+
     },[])
 
-    console.log(user.username)
+    if(user){
+        console.log(user.username)
+    }
 
     return (
         <div className="bg-white">
@@ -438,15 +444,17 @@ export default function Navigation() {
 
                             <div className="ml-auto flex items-center">
                                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                                    {user.isActive?(<h1>{user.username}</h1>):(
-                                    <div>
+                                    {user && user.isActive && (<h1> <DropdownButton name={user.username}/></h1>)}
+                                    {!user.isActive &&(
+                                    <div className="flex gap-2">
                                     <a href="#" className="text-sm font-medium text-gray-700 hover:text-gray-800">
                                         Sign in
                                     </a>
                                     <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
                                     <a href="#" className="text-sm font-medium text-gray-700 hover:text-gray-800">
                                         Create account
-                                    </a></div>)}
+                                    </a>
+                                    </div>)}
                                 </div>
 
                                 <div className="hidden lg:ml-8 lg:flex">

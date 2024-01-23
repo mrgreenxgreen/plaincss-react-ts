@@ -3,7 +3,7 @@ import Home from "../view/pages/Home.tsx";
 import Product from "../view/pages/Product.tsx";
 import SampleOnly from "../view/pages/SampleOnly.tsx";
 import SampleReducer from "../services/sampleOnly.tsx";
-
+import Cart from "../view/features/cart/Cart.tsx";
 
 const Router = createBrowserRouter([
 
@@ -21,7 +21,7 @@ const Router = createBrowserRouter([
     },
     {
         path:"/cart",
-        element:"<h1>cart page </h1>"
+        element:<Cart/>
     },
     {
         path:"/sample",
